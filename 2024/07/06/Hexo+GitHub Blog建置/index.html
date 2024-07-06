@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"jhoujhou.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="前言幾年有架設過 Hexo ，但是遇到一些問題，所以就來重新架設，也同時記錄學習架設過程。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="建立自己的部落格 Hexo + GitHub Pages">
+<meta property="og:url" content="https://jhoujhou.github.io/2024/07/06/Hexo+GitHub%20Blog%E5%BB%BA%E7%BD%AE/index.html">
+<meta property="og:site_name" content="周周的學習紀錄">
+<meta property="og:description" content="前言幾年有架設過 Hexo ，但是遇到一些問題，所以就來重新架設，也同時記錄學習架設過程。">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://i.imgur.com/KeSbhvO.png">
+<meta property="og:image" content="https://i.imgur.com/oputJZE.png">
+<meta property="og:image" content="https://i.imgur.com/qXOFcpb.png">
+<meta property="og:image" content="https://i.imgur.com/D0viUa5.png">
+<meta property="og:image" content="https://i.imgur.com/m8ss1Bi.png">
+<meta property="og:image" content="https://i.imgur.com/1cbI7YX.png">
+<meta property="og:image" content="https://i.imgur.com/V0orEKs.png">
+<meta property="og:image" content="https://i.imgur.com/kC3rfHM.png">
+<meta property="og:image" content="https://i.imgur.com/b5XKXs0.png">
+<meta property="og:image" content="https://i.imgur.com/XtX5wQl.png">
+<meta property="og:image" content="https://i.imgur.com/LAW0Tyk.png">
+<meta property="og:image" content="https://i.imgur.com/0tWFoZN.png">
+<meta property="og:image" content="https://i.imgur.com/XuCsGzK.png">
+<meta property="og:image" content="https://i.imgur.com/vgcoDS9.png">
+<meta property="og:image" content="https://i.imgur.com/bMHxFp9.png">
+<meta property="og:image" content="https://i.imgur.com/4HLqx5W.png">
+<meta property="og:image" content="https://i.imgur.com/qYfvvyO.png">
+<meta property="og:image" content="https://i.imgur.com/YuKGEWU.png">
+<meta property="og:image" content="https://i.imgur.com/sClCdus.png">
+<meta property="og:image" content="https://i.imgur.com/B7dhu6d.png">
+<meta property="og:image" content="https://i.imgur.com/GLdcOQ7.png">
+<meta property="og:image" content="https://i.imgur.com/ADovHDn.png">
+<meta property="og:image" content="https://i.imgur.com/42c8YGZ.png">
+<meta property="og:image" content="https://i.imgur.com/T18DQ5v.png">
+<meta property="og:image" content="https://i.imgur.com/6fJqh67.png">
+<meta property="og:image" content="https://i.imgur.com/9hO45Mf.png">
+<meta property="og:image" content="https://i.imgur.com/Xnf9jnh.png">
+<meta property="og:image" content="https://i.imgur.com/pKEliZ8.png">
+<meta property="og:image" content="https://i.imgur.com/Hpp6k6g.png">
+<meta property="article:published_time" content="2024-07-06T06:39:13.000Z">
+<meta property="article:modified_time" content="2024-07-06T08:53:56.351Z">
+<meta property="article:author" content="JHOU,YU-SYUAN">
+<meta property="article:tag" content="Hexo">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.imgur.com/KeSbhvO.png">
+
+<link rel="canonical" href="https://jhoujhou.github.io/2024/07/06/Hexo+GitHub%20Blog%E5%BB%BA%E7%BD%AE/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-TW'
+  };
+</script>
+
+  <title>建立自己的部落格 Hexo + GitHub Pages | 周周的學習紀錄</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">周周的學習紀錄</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">保持健康快樂</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤<span class="badge">7</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類<span class="badge">2</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔<span class="badge">4</span></a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://jhoujhou.github.io/2024/07/06/Hexo+GitHub%20Blog%E5%BB%BA%E7%BD%AE/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+      <meta itemprop="name" content="JHOU,YU-SYUAN">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="周周的學習紀錄">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          建立自己的部落格 Hexo + GitHub Pages
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+              
+
+              <time title="創建時間：2024-07-06 14:39:13 / 修改時間：16:53:56" itemprop="dateCreated datePublished" datetime="2024-07-06T14:39:13+08:00">2024-07-06</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Blog-build/" itemprop="url" rel="index"><span itemprop="name">Blog build</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>幾年有架設過 Hexo ，但是遇到一些問題，所以就來重新架設，也同時記錄學習架設過程。</p>
+<span id="more"></span>
+<h3 id="什麼是-Hexo"><a href="#什麼是-Hexo" class="headerlink" title="什麼是 Hexo ?"></a>什麼是 Hexo ?</h3><blockquote>
+<p>引用 <a target="_blank" rel="noopener" href="https://hexo.io/zh-tw/">Hexo</a> 網站中介紹</p>
+</blockquote>
+<p>Hexo 是一個專門用來寫網誌的框架，有幾個特性 : </p>
+<ol>
+<li>快速、簡單、易懂。</li>
+<li>可以將靜態網頁一鍵部署到 GitHub Pages、Heroku 等。</li>
+<li>支援 Markdown 格式。</li>
+<li>種多的主題跟外掛套件可使用。</li>
+</ol>
+<p><img src="https://i.imgur.com/KeSbhvO.png" alt="img"></p>
+<h3 id="安裝所需前置作業"><a href="#安裝所需前置作業" class="headerlink" title="安裝所需前置作業"></a>安裝所需前置作業</h3><ol>
+<li><p>安裝 <a target="_blank" rel="noopener" href="https://nodejs.org/en/">Node.js</a> </p>
+<p> Hexo 需要使用 Node.js 環境，若原本沒有安裝，需要安裝起來。</p>
+<p> 這裡是選擇安裝 16.16.0 LTS 版本， 安裝後可以使用 npm 來安裝。</p>
+<p> <img src="https://i.imgur.com/oputJZE.png" alt="img"></p>
+</li>
+<li><p>安裝 <a target="_blank" rel="noopener" href="https://git-scm.com/">Git</a> </p>
+<p> 用來將檔案部署到 GitHub 上，主要是用來做版本控制的程式。</p>
+<p> <img src="https://i.imgur.com/qXOFcpb.png" alt="img"></p>
+</li>
+<li><p>安裝 <a target="_blank" rel="noopener" href="https://code.visualstudio.com/">VSCODE</a> ( Visual Studio Code )</p>
+<p>使用編輯器，之後可以用來寫 Markdown 文章。</p>
+<p><img src="https://i.imgur.com/D0viUa5.png" alt="img"></p>
+</li>
+<li><p>在 <a target="_blank" rel="noopener" href="https://github.com/">GitHub</a> 上建立帳號及建立存儲庫 ( repository )</p>
+<p> <img src="https://i.imgur.com/m8ss1Bi.png" alt="img"></p>
+<p> <img src="https://i.imgur.com/1cbI7YX.png" alt="img"></p>
+<blockquote>
+<p>username 需要修改成自己帳號為主的名稱。</p>
+</blockquote>
+</li>
+</ol>
+<h3 id="Hexo-安裝"><a href="#Hexo-安裝" class="headerlink" title="Hexo 安裝"></a>Hexo 安裝</h3><p><strong>步驟1 : 安裝 Hexo開啟</strong></p>
+<ul>
+<li>CLI ( 如 git-bash 等 cmd 終端機 )，輸入以下指令 :</li>
+</ul>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hxo-cli -g  // 指令說明:透過 npm 在全域環境(-g)下安裝 Hexo-Cli</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://i.imgur.com/V0orEKs.png" alt="img"></p>
+<p>安裝後可以輸入 hexo -v 查看 Hexo 版本，確認有無安裝成功</p>
+<p><img src="https://i.imgur.com/kC3rfHM.png" alt="img"></p>
+<p><strong>步驟2 : 建立 Hexo 專案及初始化</strong></p>
+<ul>
+<li>輸入以下指令後，會自動在目前目錄上建立一個新資料夾，資料夾名稱自訂，</li>
+</ul>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo init myproject  // 指令說明 : 初始化(init) 建立 Hexo</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://i.imgur.com/b5XKXs0.png" alt="img"></p>
+<p>此時會看到你的路徑下已經建立好自訂的資料夾</p>
+<ul>
+<li>在 CLI 中切換到剛剛建立的資料夾中  <figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd JhouLearnBlog // 指令說明 : cd 為切換目錄時使用</span><br></pre></td></tr></table></figure>
+  <img src="https://i.imgur.com/XtX5wQl.png" alt="img"></li>
+</ul>
+<p><strong>步驟3 : 下載安裝 npm 所需的套件</strong></p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install  // 指令說明 : 將 package.json 相關套件下載下來安裝</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://i.imgur.com/LAW0Tyk.png" alt="img"></p>
+<p><strong>步驟4 : 本機啟動 Hexo  伺服器</strong></p>
+<p>預設路徑為 <a target="_blank" rel="noopener" href="http://localhost:4000/">http://localhost:4000/</a> </p>
+<p>要結束可以使用 Ctrl + C 關閉啟動。</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo server or hexo s </span><br></pre></td></tr></table></figure>
+
+<p><img src="https://i.imgur.com/0tWFoZN.png" alt="img"></p>
+<p>瀏覽器網址輸入預設路徑後，就會出現 Hexo 本機的網站喔，可以接者設定 Hexo 網站主題等設定了。</p>
+<p><img src="https://i.imgur.com/XuCsGzK.png" alt="img"></p>
+<h3 id="Hexo-基本設定介紹"><a href="#Hexo-基本設定介紹" class="headerlink" title="Hexo 基本設定介紹"></a>Hexo 基本設定介紹</h3><p>安裝 Hexo 安裝完成後，可以在專案資料夾中顯示下方資料夾結構 : </p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">.</span><br><span class="line">├── <span class="emphasis">_config.yml</span></span><br><span class="line"><span class="emphasis">├── package.json</span></span><br><span class="line"><span class="emphasis">├── scaffolds</span></span><br><span class="line"><span class="emphasis">├── source</span></span><br><span class="line"><span class="emphasis">|   ├── _</span>drafts</span><br><span class="line">|   └── <span class="emphasis">_posts</span></span><br><span class="line"><span class="emphasis">└── themes</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://i.imgur.com/vgcoDS9.png" alt="img"></p>
+<p>資料夾結構說明 :建立相對應的檔案</p>
+<p><strong>node_modules</strong></p>
+<p>所有需要安裝的套件都這在資料夾中</p>
+<p><strong>scaffolds</strong></p>
+<p>當要建立新的文章時，Hexo 會根據 scaffolds 資料夾建立檔案。</p>
+<p>資料夾中有三個檔案，darft.md、page.md、post.md，分別對應草稿、頁面、文章。</p>
+<p><strong>soure</strong></p>
+<p>主要放原始檔案的地方，例如 Markdown 或HTML 檔案都放在這資料夾中。</p>
+<p>如檔案或資料夾不想被編譯，可在前面加上 _ (下底線)來忽略，就不會被編譯或是複製到 public 資料夾中。</p>
+<p>另外除了 _posts 資料夾，雖然有下底線，但是是不會被忽略的。</p>
+<p><strong>themes</strong></p>
+<p>放置主題的地方，官方有提供一個預設的主題 landscape，透過設定的主題及 _config.yml 設定編譯產生靜態網站檔案。</p>
+<p><strong>_config.yml</strong></p>
+<p>主要是網站的各種設定檔，例如: 主題設定、網站標題、網址等。</p>
+<p><img src="https://i.imgur.com/bMHxFp9.png" alt="img"></p>
+<p><strong>.gitignore</strong></p>
+<p>用來忽略特定檔案或資料夾，如不想被加入版控且上傳到 GitHub 的資料夾或檔案，都寫在 .gitignore，官方預設是忽略以下檔案及資料夾，基本上此檔案不會做修改，只需了解即可。</p>
+<p><img src="https://i.imgur.com/4HLqx5W.png" alt="img"></p>
+<p><strong>package.json</strong></p>
+<p>安裝的套件都儲存在 package.json 中，是拿來放置管理 npm 下載後的檔案。</p>
+<p><strong>package-lock.json</strong></p>
+<p>是 npm 5 才有新增的檔案，主要適用於紀錄當前安裝的套件版本，</p>
+<p>為了確保安裝到正確的套件，基本上此檔案不會調整到，只有在新增、刪除及更新套件時，才會有異動。</p>
+<h3 id="Hexo-開始設定"><a href="#Hexo-開始設定" class="headerlink" title="Hexo 開始設定"></a>Hexo 開始設定</h3><ul>
+<li><p>主題設定</p>
+<p>  <strong>步驟1 :</strong> 可從<a target="_blank" rel="noopener" href="https://hexo.io/themes/">官網</a>中主題挑選自己喜歡的，目前選擇的是 <a target="_blank" rel="noopener" href="https://github.com/theme-next/hexo-theme-next">NetT</a>，下載下來，解壓後將檔案放到 theme 資料夾中。</p>
+<p>  <img src="https://i.imgur.com/qYfvvyO.png" alt="img"></p>
+<p>  <strong>步驟2 :</strong> 用 VS Code 開啟 Hexo 專案，找到 _config.yml 檔案，修改 theme  設定。</p>
+<p>  <img src="https://i.imgur.com/YuKGEWU.png" alt="img"></p>
+<p>  <strong>步驟3 :</strong> 在本機啟動 Hexo 伺服器，就會看到 NexT 主題樣式的網站。</p>
+  <figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo server</span><br></pre></td></tr></table></figure>
+<p>  <img src="https://i.imgur.com/sClCdus.png" alt="img"></p>
+</li>
+<li><p>基本設定 _config.yml ( 詳細設定可查看<a target="_blank" rel="noopener" href="https://hexo.io/zh-tw/docs/configuration">官網</a>介紹 )</p>
+  <figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># Site</span></span><br><span class="line">title: 網站標題</span><br><span class="line">subtitle: 網站副標題</span><br><span class="line">description: 網站描述</span><br><span class="line">keywords: 關鍵字</span><br><span class="line">author: 網站作者</span><br><span class="line">language: en or Zh-TW 網站語言</span><br><span class="line">timezone: &#x27;&#x27;</span><br><span class="line"></span><br><span class="line"><span class="section"># URL</span></span><br><span class="line">url: 輸入你的網站網址，也就是剛剛在 Gitub 建立的 https://username.github.io</span><br><span class="line">root: 網站根目錄</span><br><span class="line">permalink: :year/:month/:day/:title/ 文章格式</span><br><span class="line">permalink<span class="emphasis">_defaults: 各區域預設的值</span></span><br><span class="line"><span class="emphasis">pretty_</span>urls:</span><br><span class="line">  trailing<span class="emphasis">_index: true</span></span><br><span class="line"><span class="emphasis">  trailing_</span>html: true</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>其他主題設定方式</p>
+<p>  <strong>主題設定</strong> ( 詳細設定可以查看 <a target="_blank" rel="noopener" href="https://butterfly.js.org/posts/21cfbf15/">Butterfly 安裝文檔(一) 快速開始</a> )</p>
+<p>  <strong>步驟1 :</strong> 可從<a target="_blank" rel="noopener" href="https://hexo.io/themes/">官網</a>中主題挑選自己喜歡的，選擇的是 <a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a>，下載下來。</p>
+<p>  <strong>步驟2 :</strong> 確認 CLI 介面，切換到本機 Hexo 專案路徑資料夾下</p>
+  <figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd /e/JhouLearnBlog</span><br></pre></td></tr></table></figure>
+<p>  <strong>步驟3 :</strong> 安裝 Butterfly 主題樣式。(使用 npm )</p>
+  <figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i hexo-theme-butterfly</span><br></pre></td></tr></table></figure>
+<p>  <strong>步驟4 :</strong> 安裝 Butterfly 所需套件</p>
+  <figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-renderer-pug hexo-renderer-stylus --save</span><br></pre></td></tr></table></figure>
+<p>  <strong>步驟5 :</strong> 用 VS Code 開啟 Hexo 專案，找到 _config.yml 檔案，修改 theme  設定。</p>
+<p>  <img src="https://i.imgur.com/B7dhu6d.png" alt="img"></p>
+<p>  <strong>步驟6 :</strong> 在本機啟動 Hexo 伺服器，就會看到 Butterfly 主題樣式的網站。</p>
+<p>  <img src="https://i.imgur.com/GLdcOQ7.png" alt="img"></p>
+</li>
+</ul>
+<h3 id="Hexo-常用指令說明-新增文章"><a href="#Hexo-常用指令說明-新增文章" class="headerlink" title="Hexo 常用指令說明 (新增文章)"></a>Hexo 常用指令說明 (新增文章)</h3><p>除了上面安裝時會用到的指令外，還有一些常用的指令</p>
+<ul>
+<li>建立新文章<ul>
+<li>沒有 layout，可以使用 _config.yml 中的 default.layout 設定。</li>
+<li>標題有空格，需要用引號，如下範例。</li>
+<li>新增的文章指令完成後，會在 &#x2F;source&#x2F;_posts&#x2F;title.md ，可編輯文章。</li>
+<li>檔案建議以英文命名，中文可能會出現亂碼。</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo new [layout] <span class="language-xml"><span class="tag">&lt;<span class="name">title</span>&gt;</span></span></span><br><span class="line"></span><br><span class="line">ex: hexo new post &quot; title&quot;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://i.imgur.com/ADovHDn.png" alt="img"></p>
+<ul>
+<li><p>刪除靜態檔案及快取檔案</p>
+<p>  快取檔案: db.json、 靜態檔案: public</p>
+</li>
+</ul>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo clean or hexo c</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>產生編譯靜態頁面檔案</li>
+</ul>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo generate or hexo g</span><br></pre></td></tr></table></figure>
+
+<p>如果想要同時在本機啟動伺服器並產生靜態頁面，可以用以下指令</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo s -g // hexo 本機啟動伺服器 產生靜態頁面</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>部署靜態頁面檔案到 GitHub Pages 上</li>
+</ul>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo d -g // hexo 部署 產生靜態頁面</span><br></pre></td></tr></table></figure>
+
+<h3 id="部署到-GitHub-上"><a href="#部署到-GitHub-上" class="headerlink" title="部署到 GitHub 上"></a>部署到 GitHub 上</h3><p><strong>步驟1 : 建立 GitHub 帳號完後登入</strong></p>
+<p>如沒有需要建立一下</p>
+<p><strong>步驟2 : 登入後，建立新的 repository ( 專案或儲存庫 )</strong></p>
+<p><img src="https://i.imgur.com/42c8YGZ.png" alt="img"></p>
+<p><strong>步驟3 : 專案名稱命名為 username.github.io</strong></p>
+<p>username是要改成自己的帳號名稱，建立成功後會有一個 username.github.io 網域。(另外一種方式為在根目錄下新增資料夾後再把專案文章放置，差異在可以新增很多資料夾，但目前用的方式，一個 GitHub 帳號只能有一個。)</p>
+<p>(上面 安裝所需前置作業 有做就可以往下一步)</p>
+<p><img src="https://i.imgur.com/T18DQ5v.png" alt="img"></p>
+<p><strong>步驟4 : 將檔案部署到 GitHub 上</strong></p>
+<p>回到 CLI 介面，部署前須先安裝以下指令部署所需套件，Hexo 預設是沒有安裝的</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://i.imgur.com/6fJqh67.png" alt="img"></p>
+<p><strong>步驟5 :</strong> 修改 _config.yml 檔案的 Deployment 設定</p>
+<p>需要上傳到 GitHub，可以找到 deploy 設定 (根目錄中的，不是 themes 主題中的。)</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo: https://github.com/username/username.github.io.git</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>type : 選擇部署模式，目前用 git。</li>
+<li>repo : 輸入自己GitHub repository的連結，也是我們剛剛在步驟3中建立完後，會看到一個連結，複製後將連結貼上修改。</li>
+<li>branch : 選擇分支，預設為 master。</li>
+</ul>
+<p><img src="https://i.imgur.com/9hO45Mf.png" alt="img"></p>
+<p><strong>步驟6 :</strong> 將本機中的專案輸入指令部署到步驟3建立的 GitHub repository 中</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>部署到 GitHub 上完成後，可以重整畫面，確認有無上傳成功，如果有成功會看到以下畫面，看到檔案都上傳了。</p>
+<p><img src="https://i.imgur.com/Xnf9jnh.png" alt="img"></p>
+<p>點選 Settings &gt; Pages 選單中，切換 Soure 到 master 後，點選 Save。</p>
+<p><img src="https://i.imgur.com/pKEliZ8.png" alt="img"></p>
+<p>接下來，可到瀏覽器輸入上方畫面的網址，就可以看到 Hexo 順利架設在 GitHub Pages 上~~~拍手 </p>
+<p><img src="https://i.imgur.com/Hpp6k6g.png" alt="img"></p>
+<ul>
+<li>小提醒: 之後如有新的文章要上傳到 GitHub 專案上，上傳建議依序下方指令執行，這樣可以避免更新不完全，無法上傳新文章。</li>
+</ul>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">hexo c // 刪除之前建立的靜態檔案及快取檔案</span><br><span class="line">hexo g // 建立靜態頁面</span><br><span class="line">hexo d // 部署到 GitHib 上</span><br><span class="line"></span><br><span class="line">or </span><br><span class="line"></span><br><span class="line">hexo c</span><br><span class="line">hexo d -g</span><br></pre></td></tr></table></figure>
+
+<h3 id="其他設定"><a href="#其他設定" class="headerlink" title="其他設定"></a>其他設定</h3><ul>
+<li><p>建立標籤 (tags)</p>
+  <figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new page tags</span><br></pre></td></tr></table></figure>
+<p>  修改剛剛產生的 source&#x2F;tags&#x2F;inex.md 成下面的樣子並儲存。</p>
+  <figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: categories</span><br><span class="line">date: 2019-04-01 22:55:41</span><br><span class="line"><span class="section">type: &quot;tags&quot;</span></span><br><span class="line"><span class="section">---</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>建立文章分類 (Categories)</p>
+  <figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new page categories</span><br></pre></td></tr></table></figure>
+<p>  修改剛剛產生的 source&#x2F;categories&#x2F;inex.md 成下面的樣子並儲存。</p>
+  <figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: 新的文章</span><br><span class="line">date: 2017-05-26 12:12:57</span><br><span class="line"><span class="section">categories: 文章類別</span></span><br><span class="line"><span class="section">---</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>如不想每次新產生文章時，需要自己增加標籤與分類，可以在 scaffolds&#x2F;post.md 修改成下面樣子，這樣新產生文章時就會自動帶入了。</p>
+  <figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">title: &#123;&#123; title &#125;&#125;</span><br><span class="line">date: &#123;&#123; date &#125;&#125;</span><br><span class="line">categories: &#123;&#123; categories &#125;&#125;</span><br><span class="line">tags: &#123;&#123; tags &#125;&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="參考來源"><a href="#參考來源" class="headerlink" title="參考來源"></a>參考來源</h3><ol>
+<li><a target="_blank" rel="noopener" href="https://israynotarray.com/hexo/20190411/932826160/"><strong>架設 Hexo+GitHub</strong></a></li>
+<li><a target="_blank" rel="noopener" href="https://israynotarray.com/categories/hexo/">Hexo 全系列</a></li>
+<li><a target="_blank" rel="noopener" href="https://hackmd.io/@Heidi-Liu/note-hexo-github#%E3%80%90%E5%AD%B8%E7%BF%92%E7%AD%86%E8%A8%98%E3%80%91%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8-Hexo--GitHub-Pages-%E6%9E%B6%E8%A8%AD%E5%80%8B%E4%BA%BA%E7%B6%B2%E8%AA%8C"><strong>【學習筆記】如何使用 Hexo + GitHub Pages 架設個人網誌</strong></a></li>
+<li><a target="_blank" rel="noopener" href="https://chanchandev.com/note/Hexo/hexo-introduction/2335841689/">架設部落格第一次就上手 Hexo + Github + 自訂網域</a></li>
+<li><a target="_blank" rel="noopener" href="https://guiblogs.com/hexo30-6/"><strong>Day 6：設定你的 Hexo 佈景主題：Next（上）</strong></a></li>
+<li><a target="_blank" rel="noopener" href="https://paper.dropbox.com/doc/Hexo--7zSMDUvNPffmjdilVv3AA">使用 Hexo 建置網站</a></li>
+<li><a target="_blank" rel="noopener" href="https://kemushi54.github.io/2019/04/01/%E7%AD%86%E8%A8%98-%E6%89%93%E9%80%A0%E8%87%AA%E5%B7%B1%E7%9A%84-blog%EF%BC%8CHexo-Github-%E4%B9%8B%E4%BA%8C/">**[筆記] 打造自己的 blog，Hexo + Github 之二</a> <em>(增加分類及標籤)</em>**</li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Hexo/" rel="tag"># Hexo</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/09/14/2022-09-14-%E7%B6%B2%E9%A0%81%E5%88%87%E7%89%88%E7%9B%B4%E6%92%AD%E7%8F%AD%E8%AA%B2%E7%A8%8B%E5%BF%83%E5%BE%97-2022%E5%85%AD%E8%A7%92%E5%AD%B8%E9%99%A2%E5%A4%8F%E5%AD%A3/" rel="prev" title="網頁切版直播班課程心得-2022六角學院夏季">
+      <i class="fa fa-chevron-left"></i> 網頁切版直播班課程心得-2022六角學院夏季
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%80%E9%BA%BC%E6%98%AF-Hexo"><span class="nav-number">2.</span> <span class="nav-text">什麼是 Hexo ?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%9D%E6%89%80%E9%9C%80%E5%89%8D%E7%BD%AE%E4%BD%9C%E6%A5%AD"><span class="nav-number">3.</span> <span class="nav-text">安裝所需前置作業</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Hexo-%E5%AE%89%E8%A3%9D"><span class="nav-number">4.</span> <span class="nav-text">Hexo 安裝</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Hexo-%E5%9F%BA%E6%9C%AC%E8%A8%AD%E5%AE%9A%E4%BB%8B%E7%B4%B9"><span class="nav-number">5.</span> <span class="nav-text">Hexo 基本設定介紹</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Hexo-%E9%96%8B%E5%A7%8B%E8%A8%AD%E5%AE%9A"><span class="nav-number">6.</span> <span class="nav-text">Hexo 開始設定</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Hexo-%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4%E8%AA%AA%E6%98%8E-%E6%96%B0%E5%A2%9E%E6%96%87%E7%AB%A0"><span class="nav-number">7.</span> <span class="nav-text">Hexo 常用指令說明 (新增文章)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%83%A8%E7%BD%B2%E5%88%B0-GitHub-%E4%B8%8A"><span class="nav-number">8.</span> <span class="nav-text">部署到 GitHub 上</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B6%E4%BB%96%E8%A8%AD%E5%AE%9A"><span class="nav-number">9.</span> <span class="nav-text">其他設定</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%83%E8%80%83%E4%BE%86%E6%BA%90"><span class="nav-number">10.</span> <span class="nav-text">參考來源</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="JHOU,YU-SYUAN"
+      src="/uploads/avatar.jpg">
+  <p class="site-author-name" itemprop="name">JHOU,YU-SYUAN</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">4</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">標籤</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/JHOUJHOU" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;JHOUJHOU" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:jhou56112930@gmail.com" title="E-Mail → mailto:jhou56112930@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.youtube.com/channel/UC9dY6xWirdmZFX2wQ-szbJQ/featured" title="YouTube → https:&#x2F;&#x2F;www.youtube.com&#x2F;channel&#x2F;UC9dY6xWirdmZFX2wQ-szbJQ&#x2F;featured" rel="noopener" target="_blank"><i class="fab fa-youtube fa-fw"></i></a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">JHOU,YU-SYUAN</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 強力驅動
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+  <script defer src="/lib/three/three.min.js"></script>
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
