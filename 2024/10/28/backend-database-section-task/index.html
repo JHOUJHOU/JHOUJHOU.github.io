@@ -41,12 +41,13 @@
 <meta property="og:image" content="https://i.imgur.com/4B27w39.png">
 <meta property="og:image" content="https://i.imgur.com/nFJBDsw.png">
 <meta property="og:image" content="https://i.imgur.com/j0u7Cia.png">
-<meta property="og:image" content="https://i.imgur.com/FWtH3Rx.png">
+<meta property="og:image" content="https://i.imgur.com/qAfPKj8.png">
+<meta property="og:image" content="https://i.imgur.com/Kg1VmZ2.png">
 <meta property="og:image" content="https://i.imgur.com/V2tot0f.png">
 <meta property="og:image" content="https://i.imgur.com/TITX2hY.png">
 <meta property="og:image" content="https://i.imgur.com/Y92gjYr.png">
 <meta property="article:published_time" content="2024-10-28T13:58:51.000Z">
-<meta property="article:modified_time" content="2024-10-28T14:57:22.156Z">
+<meta property="article:modified_time" content="2024-10-28T15:30:39.937Z">
 <meta property="article:author" content="JHOU,YU-SYUAN">
 <meta property="article:tag" content="六角學院">
 <meta property="article:tag" content="後端">
@@ -209,7 +210,7 @@
               <span class="post-meta-item-text">發表於</span>
               
 
-              <time title="創建時間：2024-10-28 21:58:51 / 修改時間：22:57:22" itemprop="dateCreated datePublished" datetime="2024-10-28T21:58:51+08:00">2024-10-28</time>
+              <time title="創建時間：2024-10-28 21:58:51 / 修改時間：23:30:39" itemprop="dateCreated datePublished" datetime="2024-10-28T21:58:51+08:00">2024-10-28</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -434,19 +435,19 @@
 <p>情境問題拆解：</p>
 <ul>
 <li>使用 <strong>UPDATE</strong> 更新資料語法。</li>
-<li>使用 <strong>SET</strong> 語法，定價<strong>沙發價格要是 2000 元</strong>。</li>
+<li>使用 <strong>SET</strong> 語法，定義<strong>沙發價格要減 2000 元</strong>。</li>
 <li>使用 <strong>WHERE</strong> 篩選條件語法，篩選出 <strong>北歐風雙人沙發</strong> 商品執行<strong>更新價格</strong>。</li>
 </ul>
 <p>SQL 語法解題：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">UPDATE</span> products</span><br><span class="line"><span class="keyword">SET</span> price <span class="operator">=</span> <span class="number">2000</span></span><br><span class="line"><span class="keyword">WHERE</span> name <span class="operator">=</span> <span class="string">&#x27;北歐風雙人沙發&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">--查詢商品價格是否價格已更新</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> </span><br><span class="line"><span class="keyword">FROM</span> products</span><br><span class="line"><span class="keyword">WHERE</span> name <span class="operator">=</span> <span class="string">&#x27;北歐風雙人沙發&#x27;</span>;</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://i.imgur.com/FWtH3Rx.png"></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 沒看清楚題目，不是把商品價格更新為 2000 元</span></span><br><span class="line"><span class="keyword">UPDATE</span> products</span><br><span class="line"><span class="keyword">SET</span> price <span class="operator">=</span> <span class="number">2000</span></span><br><span class="line"><span class="keyword">WHERE</span> name <span class="operator">=</span> <span class="string">&#x27;北歐風雙人沙發&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 修正解答</span></span><br><span class="line"><span class="keyword">UPDATE</span> products</span><br><span class="line"><span class="keyword">SET</span> price <span class="operator">=</span> price <span class="operator">-</span> <span class="number">2000</span></span><br><span class="line"><span class="keyword">WHERE</span> name <span class="operator">=</span> <span class="string">&#x27;北歐風雙人沙發&#x27;</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">--查詢商品價格是否價格已更新</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> </span><br><span class="line"><span class="keyword">FROM</span> products</span><br><span class="line"><span class="keyword">WHERE</span> name <span class="operator">=</span> <span class="string">&#x27;北歐風雙人沙發&#x27;</span>;</span><br></pre></td></tr></table></figure>
+<p>調降前<br><img src="https://i.imgur.com/qAfPKj8.png"></p>
+<p>調降後<br><img src="https://i.imgur.com/Kg1VmZ2.png"></p>
 <h3 id="情境十四：更新庫存"><a href="#情境十四：更新庫存" class="headerlink" title="情境十四：更新庫存"></a>情境十四：更新庫存</h3><p>主管：「電腦辦公椅進了 5 張」</p>
 <p>小美想查：要如何增加這款椅子的庫存數量</p>
 <p>情境問題拆解：</p>
 <ul>
 <li>使用 <strong>UPDATE</strong> 更新資料語法。</li>
-<li>使用 <strong>SET</strong> 語法，定價<strong>電腦辦公椅庫存量要增加 5 個</strong>。</li>
+<li>使用 <strong>SET</strong> 語法，定義<strong>電腦辦公椅庫存量要增加 5 個</strong>。</li>
 <li>使用 <strong>WHERE</strong> 篩選條件語法，篩選出 <strong>電腦辦公椅</strong> 商品執行<strong>更新庫存量</strong>。</li>
 </ul>
 <p>SQL 語法解題：</p>
