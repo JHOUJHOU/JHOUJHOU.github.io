@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"jhoujhou.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="2024 後端工程師 - 資料庫體驗營 預習影音課程 作業">
+<meta property="og:type" content="article">
+<meta property="og:title" content="小節作業：家具店的菜雞銷售奇遇記">
+<meta property="og:url" content="https://jhoujhou.github.io/2024/10/28/%E5%B0%8F%E7%AF%80%E4%BD%9C%E6%A5%AD%EF%BC%9A%E5%AE%B6%E5%85%B7%E5%BA%97%E7%9A%84%E8%8F%9C%E9%9B%9E%E9%8A%B7%E5%94%AE%E5%A5%87%E9%81%87%E8%A8%98/index.html">
+<meta property="og:site_name" content="周周的學習紀錄">
+<meta property="og:description" content="2024 後端工程師 - 資料庫體驗營 預習影音課程 作業">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://i.imgur.com/e3KGREm.png">
+<meta property="og:image" content="https://i.imgur.com/auPWLAX.png">
+<meta property="og:image" content="https://i.imgur.com/sVledzj.png">
+<meta property="og:image" content="https://i.imgur.com/kof0iTY.png">
+<meta property="og:image" content="https://i.imgur.com/hqix8PE.png">
+<meta property="og:image" content="https://i.imgur.com/SLkW4iv.png">
+<meta property="og:image" content="https://i.imgur.com/xm8xBDn.png">
+<meta property="og:image" content="https://i.imgur.com/ajdawCl.png">
+<meta property="og:image" content="https://i.imgur.com/NU6cNO3.png">
+<meta property="og:image" content="https://i.imgur.com/fzUDZOc.png">
+<meta property="og:image" content="https://i.imgur.com/s2NElrJ.png">
+<meta property="og:image" content="https://i.imgur.com/4B27w39.png">
+<meta property="og:image" content="https://i.imgur.com/nFJBDsw.png">
+<meta property="og:image" content="https://i.imgur.com/j0u7Cia.png">
+<meta property="og:image" content="https://i.imgur.com/FWtH3Rx.png">
+<meta property="og:image" content="https://i.imgur.com/V2tot0f.png">
+<meta property="og:image" content="https://i.imgur.com/TITX2hY.png">
+<meta property="og:image" content="https://i.imgur.com/RZyOjse.png">
+<meta property="og:image" content="https://i.imgur.com/CWfZTfX.png">
+<meta property="article:published_time" content="2024-10-28T13:58:51.000Z">
+<meta property="article:modified_time" content="2024-10-28T14:36:42.951Z">
+<meta property="article:author" content="JHOU,YU-SYUAN">
+<meta property="article:tag" content="六角學院">
+<meta property="article:tag" content="後端">
+<meta property="article:tag" content="SQL">
+<meta property="article:tag" content="資料庫">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.imgur.com/e3KGREm.png">
+
+<link rel="canonical" href="https://jhoujhou.github.io/2024/10/28/%E5%B0%8F%E7%AF%80%E4%BD%9C%E6%A5%AD%EF%BC%9A%E5%AE%B6%E5%85%B7%E5%BA%97%E7%9A%84%E8%8F%9C%E9%9B%9E%E9%8A%B7%E5%94%AE%E5%A5%87%E9%81%87%E8%A8%98/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-TW'
+  };
+</script>
+
+  <title>小節作業：家具店的菜雞銷售奇遇記 | 周周的學習紀錄</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">周周的學習紀錄</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">保持健康快樂</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>標籤<span class="badge">10</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分類<span class="badge">3</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔<span class="badge">7</span></a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://jhoujhou.github.io/2024/10/28/%E5%B0%8F%E7%AF%80%E4%BD%9C%E6%A5%AD%EF%BC%9A%E5%AE%B6%E5%85%B7%E5%BA%97%E7%9A%84%E8%8F%9C%E9%9B%9E%E9%8A%B7%E5%94%AE%E5%A5%87%E9%81%87%E8%A8%98/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+      <meta itemprop="name" content="JHOU,YU-SYUAN">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="周周的學習紀錄">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          小節作業：家具店的菜雞銷售奇遇記
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+              
+
+              <time title="創建時間：2024-10-28 21:58:51 / 修改時間：22:36:42" itemprop="dateCreated datePublished" datetime="2024-10-28T21:58:51+08:00">2024-10-28</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%AD%B8%E7%BF%92%E7%AD%86%E8%A8%98/" itemprop="url" rel="index"><span itemprop="name">學習筆記</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <blockquote>
+<p>2024 後端工程師 - 資料庫體驗營 預習影音課程 作業</p>
+</blockquote>
+<span id="more"></span>
+<h2 id="事前準備"><a href="#事前準備" class="headerlink" title="事前準備"></a>事前準備</h2><ol>
+<li><p>劇情情境</p>
+ <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">劇情旁白</span><br><span class="line"></span><br><span class="line">剛進入『築夢家居』當銷售顧問的小美，</span><br><span class="line"></span><br><span class="line">沒想到第一天上班就遇到系統大當機，</span><br><span class="line">最扯的是這間老字號家具店只有 POS 機和資料庫，</span><br><span class="line">也沒有網站可以查詢</span><br><span class="line"></span><br><span class="line">偏偏今天是週年慶開跑，主管又在門市坐鎮，</span><br><span class="line">店裡生意好到不行，只好硬著頭皮詢問店裡的工程師大大...</span><br><span class="line"></span><br><span class="line">劇情對話</span><br><span class="line">（門市內）</span><br><span class="line"></span><br><span class="line">客人：我要看那個貓抓皮沙發，你們還有貨嗎？</span><br><span class="line"></span><br><span class="line">小美：（慌張）啊...貓抓皮沙發...</span><br><span class="line">（急著用 LINE 問小明）</span><br><span class="line"></span><br><span class="line">小美：學長救命！要怎麼查這個沙發？</span><br><span class="line"></span><br><span class="line">小明：用等於就可以了：</span><br><span class="line"></span><br><span class="line">   <span class="keyword">SELECT</span> name, price, stock</span><br><span class="line">   <span class="keyword">FROM</span> products</span><br><span class="line">   <span class="keyword">WHERE</span> name <span class="operator">=</span> <span class="string">&#x27;貓抓皮L型沙發&#x27;</span>;</span><br><span class="line">   </span><br><span class="line">小美：喔！就是</span><br><span class="line">   選取 名字、價格、庫存</span><br><span class="line">   從 商品表</span><br><span class="line">   找 商品名等於貓抓皮L型沙發</span><br><span class="line">   對嗎？</span><br><span class="line"></span><br><span class="line">小明：對！很快就上手了嘛！</span><br><span class="line"></span><br><span class="line">小美：（快速輸入）</span><br><span class="line"></span><br><span class="line">   哇！真的查到了！</span><br><span class="line">   只剩一張庫存耶...</span><br><span class="line"></span><br><span class="line">客人：（不耐煩）小姐？到底有沒有啊？</span><br><span class="line">小美： 這款 L 型沙發目前最後一張特價 <span class="number">52900</span>，要幫您預訂嗎？</span><br><span class="line">客人：哦？最後一張喔...那...就先訂起來好了！</span><br><span class="line">小明：！！！這麼快就會了？根本是資料庫天才 <span class="operator">=</span><span class="operator">=</span> b</span><br><span class="line">小明：那我再考你幾題，如果你都會了以後，那我就可以退休了ㄏㄏㄏ</span><br><span class="line">小美：.....</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>家具小節作業模擬資料</p>
+ <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> products (</span><br><span class="line">   name <span class="type">VARCHAR</span>(<span class="number">100</span>),         <span class="comment">-- 商品名稱</span></span><br><span class="line">   price <span class="type">INTEGER</span>,            <span class="comment">-- 原價</span></span><br><span class="line">   discount_price <span class="type">INTEGER</span>,    <span class="comment">-- 優惠價</span></span><br><span class="line">   stock <span class="type">INTEGER</span>,            <span class="comment">-- 庫存數量</span></span><br><span class="line">   category <span class="type">VARCHAR</span>(<span class="number">50</span>),      <span class="comment">-- 商品分類</span></span><br><span class="line">   status <span class="type">VARCHAR</span>(<span class="number">20</span>)         <span class="comment">-- 商品狀態</span></span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> products (name, price, discount_price, stock, category, status) <span class="keyword">VALUES</span></span><br><span class="line">   (<span class="string">&#x27;北歐風雙人沙發&#x27;</span>, <span class="number">39900</span>, <span class="number">35900</span>, <span class="number">3</span>, <span class="string">&#x27;沙發&#x27;</span>, <span class="string">&#x27;active&#x27;</span>),</span><br><span class="line">   (<span class="string">&#x27;貓抓皮L型沙發&#x27;</span>, <span class="number">58900</span>, <span class="number">52900</span>, <span class="number">1</span>, <span class="string">&#x27;沙發&#x27;</span>, <span class="string">&#x27;active&#x27;</span>),</span><br><span class="line">   (<span class="string">&#x27;典雅三人座沙發&#x27;</span>, <span class="number">42800</span>, <span class="number">42800</span>, <span class="number">5</span>, <span class="string">&#x27;沙發&#x27;</span>, <span class="string">&#x27;active&#x27;</span>),</span><br><span class="line">   (<span class="string">&#x27;工業風電視櫃&#x27;</span>, <span class="number">5900</span>, <span class="number">4900</span>, <span class="number">12</span>, <span class="string">&#x27;櫃子&#x27;</span>, <span class="string">&#x27;active&#x27;</span>),</span><br><span class="line">   (<span class="string">&#x27;簡約書櫃&#x27;</span>, <span class="number">3500</span>, <span class="number">3500</span>, <span class="number">8</span>, <span class="string">&#x27;櫃子&#x27;</span>, <span class="string">&#x27;active&#x27;</span>),</span><br><span class="line">   (<span class="string">&#x27;玄關鞋櫃&#x27;</span>, <span class="number">2900</span>, <span class="number">2900</span>, <span class="number">15</span>, <span class="string">&#x27;櫃子&#x27;</span>, <span class="string">&#x27;active&#x27;</span>),</span><br><span class="line">   (<span class="string">&#x27;日式雙人床架&#x27;</span>, <span class="number">12000</span>, <span class="number">11200</span>, <span class="number">6</span>, <span class="string">&#x27;床架&#x27;</span>, <span class="string">&#x27;active&#x27;</span>),</span><br><span class="line">   (<span class="string">&#x27;掀床五尺雙人床&#x27;</span>, <span class="number">19900</span>, <span class="number">18900</span>, <span class="number">2</span>, <span class="string">&#x27;床架&#x27;</span>, <span class="string">&#x27;active&#x27;</span>),</span><br><span class="line">   (<span class="string">&#x27;兒童床架&#x27;</span>, <span class="number">8900</span>, <span class="number">8900</span>, <span class="number">0</span>, <span class="string">&#x27;床架&#x27;</span>, <span class="string">&#x27;inactive&#x27;</span>),</span><br><span class="line">   (<span class="string">&#x27;電腦辦公椅&#x27;</span>, <span class="number">4500</span>, <span class="number">3900</span>, <span class="number">20</span>, <span class="string">&#x27;椅子&#x27;</span>, <span class="string">&#x27;active&#x27;</span>),</span><br><span class="line">   (<span class="string">&#x27;餐椅四入組&#x27;</span>, <span class="number">6000</span>, <span class="number">5200</span>, <span class="number">8</span>, <span class="string">&#x27;椅子&#x27;</span>, <span class="string">&#x27;active&#x27;</span>),</span><br><span class="line">   (<span class="string">&#x27;北歐風餐桌&#x27;</span>, <span class="number">15800</span>, <span class="number">14800</span>, <span class="number">4</span>, <span class="string">&#x27;桌子&#x27;</span>, <span class="string">&#x27;active&#x27;</span>),</span><br><span class="line">   (<span class="string">&#x27;實木咖啡桌&#x27;</span>, <span class="number">3200</span>, <span class="number">2900</span>, <span class="number">10</span>, <span class="string">&#x27;桌子&#x27;</span>, <span class="string">&#x27;active&#x27;</span>),</span><br><span class="line">   (<span class="string">&#x27;電競書桌&#x27;</span>, <span class="number">8900</span>, <span class="number">8900</span>, <span class="number">0</span>, <span class="string">&#x27;桌子&#x27;</span>, <span class="string">&#x27;inactive&#x27;</span>);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在 <a target="_blank" rel="noopener" href="https://pg-sql.com/">PG SQL</a> 建立 products 資料表，出現成功訊息代表建立完成，可查詢資料表目前狀態。</p>
+</li>
+</ol>
+<p><img src="https://i.imgur.com/e3KGREm.png"></p>
+<p><img src="https://i.imgur.com/auPWLAX.png"></p>
+<h2 id="題目"><a href="#題目" class="headerlink" title="題目"></a>題目</h2><blockquote>
+<p>題目類型：基礎比較運算</p>
+</blockquote>
+<h3 id="情境一：單品查詢"><a href="#情境一：單品查詢" class="headerlink" title="情境一：單品查詢"></a>情境一：單品查詢</h3><p>客人：「這張北歐風雙人沙發多少錢？」</p>
+<p>小美想查：想找到這張沙發的價格和庫存</p>
+<p>情境問題拆解：</p>
+<ul>
+<li>使用 <strong>SELECT</strong> 查詢語法，查詢 <strong>商品名稱</strong> 、<strong>價格</strong> 、 <strong>庫存</strong> 欄位。</li>
+<li>使用 <strong>WHERE</strong>  篩選條件語法，篩選為 <strong>北歐風雙人沙發</strong> 的商品。</li>
+</ul>
+<p>SQL 語法解題：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> name, price, stock</span><br><span class="line"><span class="keyword">FROM</span> products</span><br><span class="line"><span class="keyword">WHERE</span> name <span class="operator">=</span> <span class="string">&#x27;北歐風雙人沙發&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://i.imgur.com/sVledzj.png"></p>
+<h3 id="情境二：價格比較"><a href="#情境二：價格比較" class="headerlink" title="情境二：價格比較"></a>情境二：價格比較</h3><p>客人：「請列出 5000 元以下的櫃子有哪些？」<br>小美想查：找出櫃子類且價格在 5000 以下的商品</p>
+<p>情境問題拆解：</p>
+<ul>
+<li>使用 <strong>SELECT</strong> 查詢語法，查詢<strong>所有欄位</strong>。</li>
+<li>使用 <strong>WHERE</strong> 篩選條件語法 及 <strong>AND</strong> 且 語法，篩選同為<ul>
+<li><strong>櫃子</strong> 類的商品。</li>
+<li>運用 <strong>比較運算子 &lt; 小於</strong> 語法，篩選出<strong>價格在 5000 元以下的櫃子</strong>類的商品。</li>
+</ul>
+</li>
+</ul>
+<p>SQL 語法解題：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span></span><br><span class="line"><span class="keyword">FROM</span> products</span><br><span class="line"><span class="keyword">WHERE</span> category <span class="operator">=</span> <span class="string">&#x27;櫃子&#x27;</span> </span><br><span class="line"><span class="keyword">AND</span> price <span class="operator">&lt;</span> <span class="number">5000</span>;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://i.imgur.com/kof0iTY.png"></p>
+<h3 id="情境三：庫存確認"><a href="#情境三：庫存確認" class="headerlink" title="情境三：庫存確認"></a>情境三：庫存確認</h3><p>客人：「日式雙人床架還有貨嗎？」<br>小美想查：確認日式雙人床架的庫存狀況</p>
+<p>情境問題拆解：</p>
+<ul>
+<li>使用 <strong>SELECT</strong> 查詢語法，查詢 <strong>商品名稱</strong>、<strong>商品庫存</strong> 欄位。</li>
+<li>使用 <strong>WHERE</strong> 篩選條件語法，篩選 <strong>日式雙人床架</strong> 商品庫存情況。</li>
+</ul>
+<p>SQL 語法解題：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> name, stock</span><br><span class="line"><span class="keyword">FROM</span> products</span><br><span class="line"><span class="keyword">WHERE</span> name <span class="operator">=</span> <span class="string">&#x27;日式雙人床架&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://i.imgur.com/hqix8PE.png"></p>
+<blockquote>
+<p>題目類型：邏輯運算 AND</p>
+</blockquote>
+<h3 id="情境四：預算內的商品"><a href="#情境四：預算內的商品" class="headerlink" title="情境四：預算內的商品"></a>情境四：預算內的商品</h3><p>客人：「想找 4 萬以下，而且有現貨的沙發」<br>小美想查：要同時符合：是沙發、4萬以下、有庫存</p>
+<p>情境問題拆解：</p>
+<ul>
+<li>使用 <strong>SELECT</strong> 查詢語法，查詢 <strong>商品名稱</strong>、<strong>商品價格</strong>、<strong>商品庫存</strong>、<strong>商品分類</strong> 欄位。</li>
+<li>使用 <strong>WHERE</strong> 篩選條件語法 及 <strong>AND</strong> <strong>且</strong> 語法，篩選同為<ul>
+<li><strong>沙發</strong> 類的商品</li>
+<li>運用 <strong>比較運算子 &lt; 小於</strong> 語法 ，篩選出<strong>價格在 4 萬元以下的沙發</strong>商品</li>
+<li>運用 <strong>比較運算子 &gt; 大於</strong> 語法，篩選出<strong>沙發庫存大於 0 的沙發</strong>商品</li>
+</ul>
+</li>
+</ul>
+<p>SQL 語法解題：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> name, price, stock, category</span><br><span class="line"><span class="keyword">FROM</span> products</span><br><span class="line"><span class="keyword">WHERE</span> category <span class="operator">=</span> <span class="string">&#x27;沙發&#x27;</span></span><br><span class="line"><span class="keyword">AND</span> price <span class="operator">&gt;</span> <span class="number">40000</span></span><br><span class="line"><span class="keyword">AND</span> stock <span class="operator">&gt;</span> <span class="number">0</span>;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://i.imgur.com/SLkW4iv.png"></p>
+<h3 id="情境五：特價且有貨"><a href="#情境五：特價且有貨" class="headerlink" title="情境五：特價且有貨"></a>情境五：特價且有貨</h3><p>客人：「沙發有哪些特價且現貨的品項？」<br>小美想查：要找到沙發類且有特價（原價大於優惠價）且還有庫存的商品</p>
+<p>情境問題拆解：</p>
+<ul>
+<li>使用 <strong>SELECT</strong> 查詢語法，查詢<strong>所有欄位</strong>。</li>
+<li>使用 <strong>WHERE</strong> 篩選條件語法 及 <strong>AND</strong> 且 語法，篩選同為<ul>
+<li><strong>沙發</strong> 類的商品。</li>
+<li>運用 <strong>比較運算子 &gt; 大於</strong> 語法，篩選出<strong>沙發類的商品中，原價大於優惠價的商品</strong>。</li>
+<li>運用 <strong>比較運算子 &gt; 大於</strong> 語法，篩選出<strong>原價大於優惠價的商品並且有庫存的沙發類商品</strong>。</li>
+</ul>
+</li>
+</ul>
+<p>SQL 語法解題：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span></span><br><span class="line"><span class="keyword">FROM</span> products</span><br><span class="line"><span class="keyword">WHERE</span> category <span class="operator">=</span> <span class="string">&#x27;沙發&#x27;</span></span><br><span class="line"><span class="keyword">AND</span> price <span class="operator">&gt;</span> discount_price</span><br><span class="line"><span class="keyword">AND</span> stock <span class="operator">&gt;</span> <span class="number">0</span>;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://i.imgur.com/xm8xBDn.png"></p>
+<blockquote>
+<p>題目類型：邏輯運算 OR</p>
+</blockquote>
+<h3 id="情境六：多分類查詢"><a href="#情境六：多分類查詢" class="headerlink" title="情境六：多分類查詢"></a>情境六：多分類查詢</h3><p>客人：「我要找櫃子或桌子」<br>小美想查：要找出櫃子類或桌子類的商品</p>
+<p>情境問題拆解：</p>
+<ul>
+<li>使用 <strong>SELECT</strong> 查詢語法，查詢<strong>所有欄位</strong>。</li>
+<li>使用 <strong>WHERE</strong> 篩選條件語法 及 <strong>OR 或</strong> 語法，篩選其中一個條件符合<ul>
+<li><strong>櫃子</strong> 類或 <strong>桌子</strong> 類的商品</li>
+</ul>
+</li>
+</ul>
+<p>SQL 語法解題：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span></span><br><span class="line"><span class="keyword">FROM</span> products</span><br><span class="line"><span class="keyword">WHERE</span> category <span class="operator">=</span> <span class="string">&#x27;櫃子&#x27;</span> </span><br><span class="line"><span class="keyword">OR</span> category <span class="operator">=</span> <span class="string">&#x27;桌子&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://i.imgur.com/ajdawCl.png"></p>
+<h3 id="情境七：指定商品"><a href="#情境七：指定商品" class="headerlink" title="情境七：指定商品"></a>情境七：指定商品</h3><p>客人：「北歐風雙人沙發和貓抓皮L型沙發哪個還有貨？」<br>小美想查：要找出這兩張特定沙發的庫存狀況</p>
+<p>情境問題拆解：</p>
+<ul>
+<li>使用 <strong>SELECT</strong> 查詢語法，查詢<strong>所有欄位</strong>。</li>
+<li>使用 <strong>WHERE</strong> 篩選條件語法 、 <strong>AND 且</strong> 、<strong>OR 或</strong> 語法，篩選<ul>
+<li>運用 <strong>比較運算子 &#x3D; 等於</strong> 語法，篩選出 <strong>北歐風雙人沙發 或 貓抓皮L型沙發</strong> 的商品。</li>
+<li>運用 <strong>比較運算子 &gt; 大於</strong> 語法，篩選出 <strong>北歐風雙人沙發 或 貓抓皮L型沙發 商品庫存大於 0 的沙發</strong>商品</li>
+</ul>
+</li>
+</ul>
+<p>SQL 語法解題：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span></span><br><span class="line"><span class="keyword">FROM</span> products</span><br><span class="line"><span class="keyword">WHERE</span> name <span class="operator">=</span> <span class="string">&#x27;北歐風雙人沙發&#x27;</span> </span><br><span class="line"><span class="keyword">OR</span> name <span class="operator">=</span> <span class="string">&#x27;貓抓皮L型沙發&#x27;</span> </span><br><span class="line"><span class="keyword">AND</span> stock <span class="operator">&gt;</span> <span class="number">0</span>;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://i.imgur.com/NU6cNO3.png"></p>
+<blockquote>
+<p>題目類型：IN 運算</p>
+</blockquote>
+<h3 id="情境八：多分類查詢"><a href="#情境八：多分類查詢" class="headerlink" title="情境八：多分類查詢"></a>情境八：多分類查詢</h3><p>客人：「客廳的家具有哪些？我要看沙發、櫃子跟桌子」</p>
+<p>小美想查：要找出沙發、櫃子和桌子這三種分類的商品</p>
+<p>情境問題拆解：</p>
+<ul>
+<li>使用 <strong>SELECT</strong> 查詢語法，查詢<strong>所有欄位</strong>。</li>
+<li>使用 <strong>WHERE</strong> 篩選條件語法 及 <strong>IN 運算</strong>語法，篩選客廳中<strong>沙發</strong>、<strong>櫃子</strong>、<strong>桌子</strong>的家具商品。</li>
+</ul>
+<p>SQL 語法解題：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span></span><br><span class="line"><span class="keyword">FROM</span> products</span><br><span class="line"><span class="keyword">WHERE</span> category <span class="keyword">IN</span> ( <span class="string">&#x27;沙發&#x27;</span> , <span class="string">&#x27;櫃子&#x27;</span> , <span class="string">&#x27;桌子&#x27;</span> );</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://i.imgur.com/fzUDZOc.png"></p>
+<h3 id="情境九：特定商品"><a href="#情境九：特定商品" class="headerlink" title="情境九：特定商品"></a>情境九：特定商品</h3><p>客人：「電腦辦公椅和餐椅四入組的價格是多少？」</p>
+<p>小美想查：要找出這兩款椅子的價格</p>
+<p>情境問題拆解：</p>
+<ul>
+<li>使用 <strong>SELECT</strong> 查詢語法，查詢 <strong>商品名稱</strong>、<strong>商品價格</strong>、<strong>商品特惠價</strong> 欄位。</li>
+<li>使用 <strong>WHERE</strong> 篩選條件語法及 OR 或 語法，篩選出<ul>
+<li>電腦辦公椅 或 餐椅四入組 的價格。</li>
+<li>運用 <strong>比較運算子 &#x3D; 等於</strong> 語法，篩選出是可售的商品，避免查出不可售出的商品。</li>
+</ul>
+</li>
+</ul>
+<p>SQL 語法解題：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> name, price, discount_price</span><br><span class="line"><span class="keyword">FROM</span> products</span><br><span class="line"><span class="keyword">WHERE</span> name <span class="operator">=</span> <span class="string">&#x27;電腦辦公椅&#x27;</span></span><br><span class="line"><span class="keyword">OR</span> name <span class="operator">=</span> <span class="string">&#x27;餐椅四入組&#x27;</span></span><br><span class="line"><span class="keyword">AND</span> status <span class="operator">=</span> <span class="string">&#x27;active&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://i.imgur.com/s2NElrJ.png"></p>
+<blockquote>
+<p>題目類型：BETWEEN</p>
+</blockquote>
+<h3 id="情境十：價格區間"><a href="#情境十：價格區間" class="headerlink" title="情境十：價格區間"></a>情境十：價格區間</h3><p>客人：「想找 10000 到 20000 之間的商品有哪些？」</p>
+<p>小美想查：列出這個價格區間的所有商品</p>
+<p>情境問題拆解：</p>
+<ul>
+<li>使用 <strong>SELECT</strong> 查詢語法，查詢<strong>所有欄位</strong>。</li>
+<li>使用 <strong>WHERE</strong> 篩選條件語法，篩選<ul>
+<li>運用  <strong>集合與範圍運算子 BETWEEN 語法，</strong>查詢<strong>商品價格或是商品特惠價在 10000 到 20000 之間</strong>的商品。</li>
+</ul>
+</li>
+</ul>
+<p>SQL 語法解題：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span></span><br><span class="line"><span class="keyword">FROM</span> products</span><br><span class="line"><span class="keyword">WHERE</span> price <span class="keyword">BETWEEN</span> <span class="operator">*</span><span class="operator">*</span><span class="operator">*</span><span class="operator">*</span><span class="number">10000</span> <span class="keyword">AND</span> <span class="number">20000</span></span><br><span class="line"><span class="keyword">OR</span> discount_price <span class="keyword">BETWEEN</span> <span class="operator">*</span><span class="operator">*</span><span class="operator">*</span><span class="operator">*</span><span class="number">10000</span> <span class="keyword">AND</span> <span class="number">20000</span>;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://i.imgur.com/4B27w39.png"></p>
+<h3 id="情境十一：庫存區間"><a href="#情境十一：庫存區間" class="headerlink" title="情境十一：庫存區間"></a>情境十一：庫存區間</h3><p>主管：「請列出庫存在 5 到 15 之間的商品」</p>
+<p>小美想查：列出庫存數量在這個範圍的商品</p>
+<p>情境問題拆解：</p>
+<ul>
+<li>使用 <strong>SELECT</strong> 查詢語法，查詢<strong>所有欄位</strong>。</li>
+<li>使用 <strong>WHERE</strong> 篩選條件語法，篩選<ul>
+<li>運用  <strong>集合與範圍運算子 BETWEEN 語法，</strong>查詢<strong>商品庫存量在 5 到 15 之間</strong>的商品。</li>
+</ul>
+</li>
+</ul>
+<p>SQL 語法解題：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span></span><br><span class="line"><span class="keyword">FROM</span> products</span><br><span class="line"><span class="keyword">WHERE</span> stock <span class="keyword">BETWEEN</span> <span class="operator">*</span><span class="operator">*</span><span class="number">5</span><span class="operator">*</span><span class="operator">*</span> <span class="keyword">AND</span> <span class="number">15</span>;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://i.imgur.com/nFJBDsw.png"></p>
+<blockquote>
+<p>題目類型：NOT IN</p>
+</blockquote>
+<h3 id="情境十二：排除商品"><a href="#情境十二：排除商品" class="headerlink" title="情境十二：排除商品"></a>情境十二：排除商品</h3><p>主管：「列出除了沙發和床架以外的商品」</p>
+<p>小美想查：要找出不是沙發和床架的商品</p>
+<p>情境問題拆解：</p>
+<ul>
+<li>使用 <strong>SELECT</strong> 查詢語法，查詢<strong>所有欄位</strong>。</li>
+<li>使用 <strong>WHERE</strong> 篩選條件語法，篩選<ul>
+<li>運用  <strong>集合與範圍運算子 NOT IN 語法，</strong>排除 <strong>沙發</strong> 跟 <strong>床架</strong> 商品，篩選出<strong>其他的商品</strong>。</li>
+</ul>
+</li>
+</ul>
+<p>SQL 語法解題：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span></span><br><span class="line"><span class="keyword">FROM</span> products</span><br><span class="line"><span class="keyword">WHERE</span> category <span class="keyword">NOT</span> <span class="keyword">IN</span> ( <span class="string">&#x27;沙發&#x27;</span>, <span class="string">&#x27;床架&#x27;</span> );</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://i.imgur.com/j0u7Cia.png"></p>
+<blockquote>
+<p>題目類型：更新和刪除</p>
+</blockquote>
+<h3 id="情境十三：調整價格"><a href="#情境十三：調整價格" class="headerlink" title="情境十三：調整價格"></a>情境十三：調整價格</h3><p>主管：「北歐風雙人沙發要調降 2000 元」</p>
+<p>小美想查：要如何更新這張沙發的價格</p>
+<p>情境問題拆解：</p>
+<ul>
+<li>使用 <strong>UPDATE</strong> 更新資料語法。</li>
+<li>使用 <strong>SET</strong> 語法，定價<strong>沙發價格要是 2000 元</strong>。</li>
+<li>使用 <strong>WHERE</strong> 篩選條件語法，篩選出 <strong>北歐風雙人沙發</strong> 商品執行<strong>更新價格</strong>。</li>
+</ul>
+<p>SQL 語法解題：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">UPDATE</span> products</span><br><span class="line"><span class="keyword">SET</span> price <span class="operator">=</span> <span class="number">2000</span></span><br><span class="line"><span class="keyword">WHERE</span> name <span class="operator">=</span> <span class="string">&#x27;北歐風雙人沙發&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">--查詢商品價格是否價格已更新</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> </span><br><span class="line"><span class="keyword">FROM</span> products</span><br><span class="line"><span class="keyword">WHERE</span> name <span class="operator">=</span> <span class="string">&#x27;北歐風雙人沙發&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://i.imgur.com/FWtH3Rx.png"></p>
+<h3 id="情境十四：更新庫存"><a href="#情境十四：更新庫存" class="headerlink" title="情境十四：更新庫存"></a>情境十四：更新庫存</h3><p>主管：「電腦辦公椅進了 5 張」</p>
+<p>小美想查：要如何增加這款椅子的庫存數量</p>
+<p>情境問題拆解：</p>
+<ul>
+<li>使用 <strong>UPDATE</strong> 更新資料語法。</li>
+<li>使用 <strong>SET</strong> 語法，定價<strong>電腦辦公椅庫存量要增加 5 個</strong>。</li>
+<li>使用 <strong>WHERE</strong> 篩選條件語法，篩選出 <strong>電腦辦公椅</strong> 商品執行<strong>更新庫存量</strong>。</li>
+</ul>
+<p>SQL 語法解題：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">UPDATE</span> products</span><br><span class="line"><span class="keyword">SET</span> stock <span class="operator">=</span> stock <span class="operator">+</span> <span class="number">5</span></span><br><span class="line"><span class="keyword">WHERE</span> name <span class="operator">=</span> <span class="string">&#x27;電腦辦公椅&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">--查詢商品庫存量是否價格已更新</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> </span><br><span class="line"><span class="keyword">FROM</span> products</span><br><span class="line"><span class="keyword">WHERE</span> name <span class="operator">=</span> <span class="string">&#x27;電腦辦公椅&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://i.imgur.com/V2tot0f.png"></p>
+<h3 id="情境十五：清除資料"><a href="#情境十五：清除資料" class="headerlink" title="情境十五：清除資料"></a>情境十五：清除資料</h3><p>主管：「要清掉兒童床架和電競書桌的資料」</p>
+<p>小美想查：要如何刪除這兩項商品</p>
+<p>情境問題拆解：</p>
+<ul>
+<li>使用 <strong>DELETE</strong> 更新資料語法。</li>
+<li>使用 <strong>WHERE</strong> 篩選條件語法，篩選出 <strong>兒童床架</strong> 和 <strong>電競書桌</strong> 商品，執行<strong>刪除商品</strong>。</li>
+</ul>
+<p>SQL 語法解題：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DELETE</span> <span class="keyword">FROM</span> products</span><br><span class="line"><span class="keyword">WHERE</span> name <span class="operator">=</span> <span class="string">&#x27;兒童床架&#x27;</span> </span><br><span class="line"><span class="keyword">OR</span> name <span class="operator">=</span> <span class="string">&#x27;電競書桌&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">--查詢商品是否已刪除</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> </span><br><span class="line"><span class="keyword">FROM</span> products</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://i.imgur.com/TITX2hY.png"></p>
+<h3 id="前一位同學出題情境：主管：「要關店了，所有產品下架！」"><a href="#前一位同學出題情境：主管：「要關店了，所有產品下架！」" class="headerlink" title="前一位同學出題情境：主管：「要關店了，所有產品下架！」"></a>前一位同學出題情境：主管：「要關店了，所有產品下架！」</h3><p>情境問題拆解：</p>
+<ul>
+<li>使用 <strong>UPDATE</strong> 更新資料語法。</li>
+<li>使用 <strong>SET</strong> 語法，將<strong>所有產品都設定為不可售狀態</strong>。</li>
+<li>使用 <strong>WHERE</strong> 篩選條件語法，篩選出 <strong>電腦辦公椅</strong> 商品執行<strong>更新庫存量</strong>。</li>
+</ul>
+<p>SQL 語法解題：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">UPDATE</span> products</span><br><span class="line"><span class="keyword">SET</span> status <span class="operator">=</span> <span class="string">&#x27;inactive&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<p>目前全部商品狀態</p>
+<p><img src="https://i.imgur.com/RZyOjse.png"></p>
+<p>更新後全部商品狀態</p>
+<p><img src="https://i.imgur.com/CWfZTfX.png"></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E5%85%AD%E8%A7%92%E5%AD%B8%E9%99%A2/" rel="tag"># 六角學院</a>
+              <a href="/tags/%E5%BE%8C%E7%AB%AF/" rel="tag"># 後端</a>
+              <a href="/tags/SQL/" rel="tag"># SQL</a>
+              <a href="/tags/%E8%B3%87%E6%96%99%E5%BA%AB/" rel="tag"># 資料庫</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2024/10/27/2024-10-27-%E8%B3%87%E6%96%99%E5%BA%AB%E7%B0%A1%E4%BB%8B%E5%8F%8A-SQL-%E8%AA%9E%E6%B3%95%E6%95%99%E5%AD%B8/" rel="prev" title="資料庫簡介及 SQL 語法教學">
+      <i class="fa fa-chevron-left"></i> 資料庫簡介及 SQL 語法教學
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8B%E5%89%8D%E6%BA%96%E5%82%99"><span class="nav-number">1.</span> <span class="nav-text">事前準備</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A1%8C%E7%9B%AE"><span class="nav-number">2.</span> <span class="nav-text">題目</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%83%85%E5%A2%83%E4%B8%80%EF%BC%9A%E5%96%AE%E5%93%81%E6%9F%A5%E8%A9%A2"><span class="nav-number">2.1.</span> <span class="nav-text">情境一：單品查詢</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%83%85%E5%A2%83%E4%BA%8C%EF%BC%9A%E5%83%B9%E6%A0%BC%E6%AF%94%E8%BC%83"><span class="nav-number">2.2.</span> <span class="nav-text">情境二：價格比較</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%83%85%E5%A2%83%E4%B8%89%EF%BC%9A%E5%BA%AB%E5%AD%98%E7%A2%BA%E8%AA%8D"><span class="nav-number">2.3.</span> <span class="nav-text">情境三：庫存確認</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%83%85%E5%A2%83%E5%9B%9B%EF%BC%9A%E9%A0%90%E7%AE%97%E5%85%A7%E7%9A%84%E5%95%86%E5%93%81"><span class="nav-number">2.4.</span> <span class="nav-text">情境四：預算內的商品</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%83%85%E5%A2%83%E4%BA%94%EF%BC%9A%E7%89%B9%E5%83%B9%E4%B8%94%E6%9C%89%E8%B2%A8"><span class="nav-number">2.5.</span> <span class="nav-text">情境五：特價且有貨</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%83%85%E5%A2%83%E5%85%AD%EF%BC%9A%E5%A4%9A%E5%88%86%E9%A1%9E%E6%9F%A5%E8%A9%A2"><span class="nav-number">2.6.</span> <span class="nav-text">情境六：多分類查詢</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%83%85%E5%A2%83%E4%B8%83%EF%BC%9A%E6%8C%87%E5%AE%9A%E5%95%86%E5%93%81"><span class="nav-number">2.7.</span> <span class="nav-text">情境七：指定商品</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%83%85%E5%A2%83%E5%85%AB%EF%BC%9A%E5%A4%9A%E5%88%86%E9%A1%9E%E6%9F%A5%E8%A9%A2"><span class="nav-number">2.8.</span> <span class="nav-text">情境八：多分類查詢</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%83%85%E5%A2%83%E4%B9%9D%EF%BC%9A%E7%89%B9%E5%AE%9A%E5%95%86%E5%93%81"><span class="nav-number">2.9.</span> <span class="nav-text">情境九：特定商品</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%83%85%E5%A2%83%E5%8D%81%EF%BC%9A%E5%83%B9%E6%A0%BC%E5%8D%80%E9%96%93"><span class="nav-number">2.10.</span> <span class="nav-text">情境十：價格區間</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%83%85%E5%A2%83%E5%8D%81%E4%B8%80%EF%BC%9A%E5%BA%AB%E5%AD%98%E5%8D%80%E9%96%93"><span class="nav-number">2.11.</span> <span class="nav-text">情境十一：庫存區間</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%83%85%E5%A2%83%E5%8D%81%E4%BA%8C%EF%BC%9A%E6%8E%92%E9%99%A4%E5%95%86%E5%93%81"><span class="nav-number">2.12.</span> <span class="nav-text">情境十二：排除商品</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%83%85%E5%A2%83%E5%8D%81%E4%B8%89%EF%BC%9A%E8%AA%BF%E6%95%B4%E5%83%B9%E6%A0%BC"><span class="nav-number">2.13.</span> <span class="nav-text">情境十三：調整價格</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%83%85%E5%A2%83%E5%8D%81%E5%9B%9B%EF%BC%9A%E6%9B%B4%E6%96%B0%E5%BA%AB%E5%AD%98"><span class="nav-number">2.14.</span> <span class="nav-text">情境十四：更新庫存</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%83%85%E5%A2%83%E5%8D%81%E4%BA%94%EF%BC%9A%E6%B8%85%E9%99%A4%E8%B3%87%E6%96%99"><span class="nav-number">2.15.</span> <span class="nav-text">情境十五：清除資料</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%89%8D%E4%B8%80%E4%BD%8D%E5%90%8C%E5%AD%B8%E5%87%BA%E9%A1%8C%E6%83%85%E5%A2%83%EF%BC%9A%E4%B8%BB%E7%AE%A1%EF%BC%9A%E3%80%8C%E8%A6%81%E9%97%9C%E5%BA%97%E4%BA%86%EF%BC%8C%E6%89%80%E6%9C%89%E7%94%A2%E5%93%81%E4%B8%8B%E6%9E%B6%EF%BC%81%E3%80%8D"><span class="nav-number">2.16.</span> <span class="nav-text">前一位同學出題情境：主管：「要關店了，所有產品下架！」</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="JHOU,YU-SYUAN"
+      src="/uploads/avatar.jpg">
+  <p class="site-author-name" itemprop="name">JHOU,YU-SYUAN</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">7</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">標籤</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/JHOUJHOU" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;JHOUJHOU" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:jhou56112930@gmail.com" title="E-Mail → mailto:jhou56112930@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.youtube.com/channel/UC9dY6xWirdmZFX2wQ-szbJQ/featured" title="YouTube → https:&#x2F;&#x2F;www.youtube.com&#x2F;channel&#x2F;UC9dY6xWirdmZFX2wQ-szbJQ&#x2F;featured" rel="noopener" target="_blank"><i class="fab fa-youtube fa-fw"></i></a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">JHOU,YU-SYUAN</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 強力驅動
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+  <script defer src="/lib/three/three.min.js"></script>
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
